@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page51 列表渲染指令 v-for 遍历value key index' >
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for='(value,key,index) in man'>{{index}}=>{{key}}:{{value}}</li>
+            </ul>
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    man:{
+                        name:'张三',
+                        age:18,
+                        wealth:'50万'
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

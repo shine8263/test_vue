@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='用v-html'>
+    </head>
+    <body>
+        <div id='app'>{{spanContent}}
+            <span v-html='link'></span>
+            <!-- <p v-html='link'></p> -->
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    link:'<a href="http://www.baidu.com">这是一个链接</a>',
+                    spanContent:'这是一个私盘'
+                }
+            })
+        </script>
+    </body>
+</html>

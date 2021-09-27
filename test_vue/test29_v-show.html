@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page47 内置指令 v-show为true的时候其实就是给DOM上了一个display:none' >
+    </head>
+    <body>
+        <div id='app' style="background:blue">
+            <p v-show="status===1">当status等于1的时候显示此行</p>
+            <span v-show="status===1">当status等于1的时候显示此行</span>
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    status:2
+                }
+            })
+        </script>
+    </body>
+</html>

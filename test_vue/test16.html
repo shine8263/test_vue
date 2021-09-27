@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page30 计算属性 对test16的扩展'>
+    </head>
+    <body>
+        <div id='app'>
+            <button v-on:click='turnOrder'>变化</button><br>
+            {{reversedText}}
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    text:'花生,苹果,香蕉'
+                },
+                computed:{
+                    reversedText:function(){
+                        return this.text.split(',').reverse().join(',');
+                    }
+                },
+                methods:{
+                    turnOrder:function(){
+                        this.text='香蕉,芭拉,开心';
+                        // alert(this.text);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

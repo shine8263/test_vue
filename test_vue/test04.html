@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='测试Mustache语法-文本插值'>
+    </head>
+    <body>
+        <div id='app'>
+            {{book}}
+        </div>
+        <script src='vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    book:'新华字典'
+                },
+                created:function(){
+                    
+                },
+                mounted:function(){
+                    console.log(this.$el)
+                }
+            })
+            app.book='牛津词典'
+        </script>
+    </body>
+</html>
