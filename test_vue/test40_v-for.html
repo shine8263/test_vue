@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>page52 v-for 监控数字变化 使用计算属性来过滤不改变原数组  使用sort排序失败了</title>
+    <style>
+        [v-cloak]{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <ul>
+            <template v-for="book in filterBooks">
+                <li>书名：{{book.name}} ==== 作者：{{book.author}}</li>
+            </template>
+        </ul>
+        <br />####################################################
+        <ul>
+            <template v-for="(book,index) in sortedBooks">
+                <li>{{index}}=>书名：{{book.name}} ==== 作者：{{book.author}}  === 书名长度：{{book.name.length}}</li>
+            </template>
+        </ul>
+
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    {
+                        name: '《java心得》',
+                        author:'张三'
+                    },
+                    {
+                        name: '《vue入门到精通》',
+                        author:'李四'
+                    },
+                    {
+                        name: '《CSS心得》',
+                        author: '王五'
+                    }
+                ]
+            },
+            computed: {
+                filterBooks: function () {
+                    return this.books.filter(function (book) {
+                        return book.name.match(/心得/);
+                    })
+                },
+                sortedBooks: function () {
+                    console.log('books', this.books);
+                    return this.books.sort(function (a,b) {
+                        return a.name.length < b.name.length;
+                    })
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
