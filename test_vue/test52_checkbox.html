@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='page68 表单控件基本用法 checkBox 复选框'>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="checked" value="htmlValue" id="html" />
+        <label for="html">Html</label>
+        <input type="checkbox" v-model="checked" value="jsValue" id="js" />
+        <label for="js">JavaScript</label>
+        <input type="checkbox" v-model="checked" value="cssValue" id="css" />
+        <label for="css">Css</label>
+        <br />
+        <span>选中的是{{checked}}</span>
+    </div>
+    <script src='./vue.js'></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                checked: ['htmlValue','jsValue']
+            }
+        })
+    </script>
+</body>
+</html>

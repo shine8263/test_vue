@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang>
+<head>
+    <meta charset="utf-8" />
+    <meta title="page60 购物车"/>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+    <div id="app" v-cloak>
+        <template v-if="tds.length">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>商品名称</th>
+                    <th>商品单价</th>
+                    <th>购买数量</th>
+                    <th>操作</th>
+                </tr>
+                <template v-for="(oneTd,index) in tds">
+                    <tr>
+                        <td>{{index}}</td>
+                        <td>{{oneTd.name}}</td>
+                        <td>{{oneTd.price}}</td>
+                        <td>
+                            <button @click="add(index)">+</button>
+                            {{oneTd.buyNum}}
+                            <button @click="reduce(index)">-</button>
+                        </td>
+                        <td><button @click="remove(index)">移除</button></td>
+                    </tr>
+                </template>
+                <tr></tr>
+            </table>
+            <span>总价格：{{totalPrice}}</span>
+        </template>
+        <div v-else>购物车为空</div>
+    </div>
+    <script src="../vue.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
