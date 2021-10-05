@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="双向绑定">
+    </head>
+    <body>
+        <div id="app">
+            <span>app.a</span>
+            <span>myData.a</span>
+        </div>
+        <script src="./vue.js"></script>
+        <script>
+
+            var myData={
+                a:1
+            }
+            var app=new Vue({
+                el:'#app',
+                data:myData
+            })
+
+            console.log(app.a);
+            app.a=2;
+            console.log(myData.a);
+            myData.a=3;
+            console.log(app.a);
+
+
+        </script>
+    </body>
+</html>

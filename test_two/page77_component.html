@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='component'>
+</head>
+<body>
+    <div id="app">
+        <Card style="width:350px;">
+            <p slot="title">与xx聊天中</p>
+            <a href="#" slot="extra">
+                <Icon type="android-close" size="18"></Icon>
+            </a>
+        </Card>
+        <div style="height:100px;">
+
+        </div>
+        <div>
+            <Row :gutter="16">
+                <i-col span="17">
+                    <i-input v-model="value" placeholder="请输入"></i-input>
+                </i-col>
+                <i-col span="4">
+                    <i-button typeof="primary" icon="paper-airplane">发送</i-button>
+                </i-col>
+            </Row>
+        </div>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+            }
+        })
+        Vue.component('my-component', {
+            //选项
+        })
+    </script>
+</body>
+</html>

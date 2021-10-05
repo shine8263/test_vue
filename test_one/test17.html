@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page31 计算属性 购物篮'>
+    </head>
+    <body>
+        <div id='app'>
+            总价：{{countAll}}<br>
+            {{countTwo}}<br>
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    package1:[
+                        {
+                            name:'iPhone 7',
+                            price:7199,
+                            count:2
+                        },
+                        {
+                            name:'iPad',
+                            price:2888,
+                            count:1
+                        }
+                    ],
+                    package2:[
+                        {
+                            name:'apple',
+                            price:3,
+                            count:5
+                        },
+                        {
+                            name:'banana',
+                            price:2,
+                            count:10
+                        }
+                    ]
+                },
+                computed:{
+                    countAll:function(){
+                        var prices=0;
+                        for(var i=0;i<this.package1.length;i++){
+                            prices+=this.package1[i].price*this.package1[i].count;
+                        }
+                        for(var i=0;i<this.package2.length;i++){
+                            prices+=this.package2[i].price*this.package2[i].count;
+                        }
+                        return prices;
+                    },
+                    countTwo:function(){
+                        return 2;
+                    }
+                }
+            })
+        </script>
+        
+    </body>
+</html>

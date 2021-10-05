@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page43 内置指令 v-cloak 当网速慢的时候，不会显示{{message}} 而是不显示任何东西' >
+    </head>
+    <style>
+        [v-cloak]{
+            display:none;
+        }
+    </style>
+    <body>
+        <div id='app' v-cloak>
+            {{message}}
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    message:'这是测试信息'
+                }
+            })
+        </script>
+    </body>
+</html>

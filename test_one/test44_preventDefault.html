@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page56 方法与事件' >
+    </head>
+    <body>
+        <div id="app">
+            <a href="https://www.baidu.com" @click="handleClick('禁止打开',$event)">link</a>
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                methods:{
+                    handleClick:function(message,event){
+                        event.preventDefault();
+                        window.alert(message);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

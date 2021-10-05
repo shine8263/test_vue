@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta title='测试钩子'>
+</head>
+
+<body>
+    <div id='app'>测试一下钩子</div>
+    <script src='./vue.js'></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                a: 2
+            },
+            created: function () {
+                this.a=3;
+                console.log(this.a);//2
+            },
+            mounted:function(){
+                console.log(this.$el);
+            }
+        });
+        console.log(app.a);
+        app.a=4;
+        console.log(app.a);
+ 
+    </script>
+</body>
+
+</html>

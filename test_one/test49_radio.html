@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='page68 表单控件基本用法 radio 这个没做出来'>
+</head>
+<body>
+    <div id="app">
+        <input type="radio" :checked="picked" />
+        <br />
+        <label>单选按钮</label>
+    </div>
+    <script src='./vue.js'></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                picked: true
+            }
+        })
+    </script>
+</body>
+</html>

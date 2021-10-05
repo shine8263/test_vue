@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='page68 表单控件基本用法 select 选择框'>
+</head>
+<body>
+    <div id="app">
+        <select v-model="selected">
+            <option >Html</option>
+            <option value="js">JavaScript</option>
+            <option >Css</option>
+        </select>
+        <br />
+        <span>选择了：{{selected}}</span>
+    </div>
+    <script src='./vue.js'></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                selected:'html'
+            }
+        })
+    </script>
+</body>
+</html>

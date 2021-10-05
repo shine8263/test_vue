@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page48 列表渲染指令 v-for 另一种写法 加name属性' >
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="book in books">{{book.name}}:{{book.num}}</li>
+                <li>循环结束</li>
+            </ul>
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    books:[
+                        {
+                            name:"java基础",
+                            num:10
+                        },
+                        {
+                            name:"css基础",
+                            num:20
+                        },
+                        {
+                            name:"html基础",
+                            num:30
+                        }
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>

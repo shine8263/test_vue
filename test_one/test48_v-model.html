@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='page67 表单控件基本用法'>
+</head>
+<body>
+    <div id="app">
+        <textarea @input="handleInput" placeholder="请输入内容" ></textarea>
+        <br />
+        <p style="white-space:pre">{{text}}</p>
+    </div>
+    <script src='./vue.js'></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                text: ''
+            },
+            methods: {
+                handleInput:function(e) {
+                    this.text=e.target.value;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page45 内置指令 切换DOM元素时，其实是复用元素而非重新渲染，加上key以后就不会复用' >
+    </head>
+    <body>
+        <div id='app'>
+            <template v-if="type==='name'">
+                <label>用户名</label>
+                <input placeholder="请输入用户名" key="name-input">
+            </template>
+            <template v-else-if="type==='mail'">
+                <label>邮箱</label>
+                <input placeholder="请输入邮箱" key="mail-input">
+            </template>
+            <br>
+            <button @click="handleToggleType">切换类型</button>
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    type:'name'
+                },
+                methods:{
+                    handleToggleType:function(){
+                        this.type=this.type==='name'?'mail':'name';
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

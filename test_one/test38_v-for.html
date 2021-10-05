@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>page52 v-for 监控数字变化</title>
+    <style>
+        [v-cloak]{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <ul>
+            <li v-for="(value,index) in books">{{index}}-{{value}}</li>
+        </ul>
+        <button v-on:click="push()">push一下</button>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    {
+                        name: '《java心得》',
+                        author:'张三'
+                    },
+                    {
+                        name: '《vue入门到精通》',
+                        author:'李四'
+                    }
+                ]
+            },
+            methods: {
+                push: function () {
+                    this.books.push({
+                        name: '《CSS揭秘》',
+                        author:'王五'
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

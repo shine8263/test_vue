@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page33 计算属性 使用其他实例的数据'>
+    </head>
+    <body>
+        <div id='app1'></div>
+        <div id='app2'>
+            {{reversedName}}<br>
+            {{reversedName2}}
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app1=new Vue({
+                el:'#app1',
+                data:{
+                    firstName:'Elon',
+                    lastName:'White'
+                },
+                computed:{
+                    name:function(){
+                        return this.firstName+","+this.lastName;
+                    }
+                }
+            })
+            var app2=new Vue({
+                el:'#app2',
+                computed:{
+                    reversedName:function(){
+                        return app1.lastName+"||"+app1.firstName;
+                    },
+                    reversedName2:{
+                        get:function(){
+                            return app1.name.split(',').reverse().join(); 
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

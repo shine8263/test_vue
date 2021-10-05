@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='page73 表单控件基本用法 checkbox'>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2"/>
+        <label>单选</label>
+        <br />
+        <p>toggle：{{toggle}}</p>
+        <p>toggle：{{value1}}</p>
+        <p>toggle：{{value2}}</p>
+    </div>
+    <script src='./vue.js'></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                toggle: 1,
+                value1: 'a',
+                value2:'b'
+            }
+        })
+    </script>
+</body>
+</html>

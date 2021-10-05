@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page27 v-bind v-if'>
+    </head>
+    <body>
+        <div id='app'>
+            <a v-bind:href='url'>链接</a>
+            <img v-if='show' v-bind:src='imgSrc'>
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    url:'http://www.baidu.com',
+                    imgSrc:'./static/image/tubiao.png',
+                    show:true
+                }
+            })
+        </script>
+    </body>
+</html>

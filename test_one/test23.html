@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta title='page37 语法糖 :class 复数classes'>
+        <style>
+            .static{
+                color:red
+            }
+            .active{
+                font-size:30px;
+            }
+            .error{
+                background:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='app'>
+            <span :class="classes">这是测试</span>
+            <br>
+            <span :class="classesMethod()">这是测试2</span>
+        </div>
+        <script src='./vue.js'></script>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    isActive:true,
+                    error:null,
+                    isError:true
+                },
+                computed:{
+                    classes:function(){
+                        return {
+                            active:this.isActive&&!this.error,
+                            'text-fail':this.error&&this.error.type==='fail',
+                            error:this.isError
+                        }
+                    }
+                },
+                methods:{
+                    classesMethod:function(){
+                        return {
+                            active:false&&this.isActive&&!this.error,
+                            'text-fail':this.error&&this.error.type==='fail',
+                            error:this.isError
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
