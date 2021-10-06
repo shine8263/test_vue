@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='component'>
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <table>
+            <t-body is="my-component"></t-body>
+        </table>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var child = {
+            template:'<div>组件内容111</div>'
+        }
+        var app = new Vue({
+            el: '#app',
+            components: {
+                'my-component':child
+            }
+        })
+    </script>
+</body>
+</html>

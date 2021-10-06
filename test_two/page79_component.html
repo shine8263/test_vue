@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='component 说是不能在table里面直接放模板，但是实验了可以'>
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <table>
+            <my-component></my-component>
+        </table>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var child = {
+            //template:'<tr><th>        </th><th>商品名称</th><th>单价</th></tr>'
+            template:'<div>组件内容</div>'
+        }
+        var app = new Vue({
+            el: '#app',
+            components: {
+                'my-component':child
+            }
+        })
+        //Vue.component('my-component', app.component);
+    </script>
+</body>
+</html>

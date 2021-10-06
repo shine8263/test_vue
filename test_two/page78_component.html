@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='component'>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var child = {
+            template:'<div>组件内的内容</div>'
+        }
+        var app = new Vue({
+            el: '#app',
+            components: {
+                'my-component':child
+            }
+        })
+        //Vue.component('my-component', app.component);
+    </script>
+</body>
+</html>
