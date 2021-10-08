@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='props' props传递值 作为子组件初始值  data传值>
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <my-component :init-count="1"></my-component><br/>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        Vue.component('my-component',{
+            props:['initCount'],
+            template:'<div>这是数量：{{count}}</div>',
+            data:function(){
+                return {
+                    count:this.initCount
+                };
+            }
+        });
+        var app=new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>

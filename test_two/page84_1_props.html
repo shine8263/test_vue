@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='props' props传递值 作为子组件初始值 computed传值>
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <my-component :font-size="50"></my-component>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        Vue.component('my-component',{
+            props:['fontSize'],
+            template:'<div :style="style">组件内容</div>',
+            computed:{
+                style:function(){
+                    return {
+                        fontSize:this.fontSize+'px'
+                    }
+                }
+            }
+        })
+        var app=new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>

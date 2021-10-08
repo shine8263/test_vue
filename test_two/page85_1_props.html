@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='props' 测试props的多种类型传值 有很多问题，无法校验>
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <my-component :prop-a=10 prop-c=falsex prop-d=11 prop-e=[4,5,6] prop-f=11></my-component>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        Vue.component('my-component',{
+            props:{
+                //必须是数字类型
+                propA:Number,
+                //必须是字符串或数字类型
+                propB:[String,Number],
+                //布尔值，如果没有定义，默认就是true
+                propC:{
+                    type:Boolean,
+                    default:true
+                },
+                //数字，而且是必传
+                propD:{
+                    type:Number,
+                    required:true
+                },
+                //如果是数组或对象，默认值必须是一个函数来返回
+                propE:{
+                    type:Array,
+                    default:function(){
+                        return [];
+                    }
+                },
+                //自定义一个验证函数
+                propF:{
+                    validator:function(value){
+                        return value>10;
+                    }
+                }
+            },
+            template:'<div><p>propA:{{propA}}</P><p>propB:{{propB}}</p>'
+                +'<p>propC:{{propC}}</p><p>propD:{{propD}}</p>'
+                +'<p>propE:{{propE}}</p><p>propF:{{propF}}</p>'
+                +'</div>'
+        })
+        var app=new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>
