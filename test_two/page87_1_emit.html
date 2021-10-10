@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='props' 测试事件 子组件用emit发送 父组件用on观察 我的写法：用增量num传值>
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <p>总数{{total}}</p>
+        <my-component @increase="handleGetTotal" @reduce="handleGetTotal"></my-component>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        Vue.component('my-component', {
+            template:
+                '<div>\
+                    <button @click="handleIncrease" > +</button >\
+                    <span>{{counter}}</span>\
+                    <button @click="handleReduce">-</button>\
+                </div>',
+            data: function () {
+                return {
+                    counter:0
+                }
+            },
+            methods: {
+                handleIncrease: function () {
+                    this.counter++;
+                    this.$emit('increase', 1);
+                },
+                handleReduce: function () {
+                    this.counter--;
+                    this.$emit('reduce', -1);
+                }
+            }
+        })
+        var app=new Vue({
+            el: '#app',
+            data: {
+                total:0
+            },
+            methods: {
+                handleGetTotal: function (num) {
+                    this.total += num;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
