@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='props' 测试事件 使用v-model 双向绑定>
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <p>总数：{{total}}</p>
+        <my-component v-model="total"></my-component>
+        <br/><button @click="handleReduce">-1</button>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //心得：<my-component v-model='total'>相当于实现了<my-component :total='total' @input='updateValue' >
+
+        Vue.component('my-component', {
+            props:['value'],
+            template:'<div>输入：<input :value="value" @input="updateValue"/></div>',
+            methods:{
+                updateValue:function(event){
+                    this.$emit('input',event.target.value);
+                }
+            }
+        })
+        var app=new Vue({
+            el: '#app',
+            data:{
+                total:0
+            },
+            methods:{
+                handleReduce:function(total){
+                    this.total--;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
