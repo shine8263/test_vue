@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='bus总线实现兄弟组件传递值' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <component-a></component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var bus=new Vue();
+
+        Vue.component('component-a',{
+            template:'<div><input @input="updateInput" /></div>',
+            methods:{
+                updateInput:function(event){
+                    bus.$emit('on-message',event.target.value);
+                }
+            }
+        })
+
+        var app=new Vue({
+            el: '#app',
+            data:{
+                message:0
+            },
+            mounted:function(){
+                var _this=this;
+                bus.$on('on-message',function(msg){
+                    _this.message=msg;
+                })
+            }
+        })
+    </script>
+</body>
+</html>

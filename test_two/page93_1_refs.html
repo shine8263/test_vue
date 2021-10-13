@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='refs 父组件指定其中一个子组件传递值 以及从子组件抓值' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <button @click="sendToChild">sendToChild</button>
+        <button @click="getChildMessage">getChildMessage</button>
+        <component-a ref="comA"></component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var bus=new Vue();
+
+        Vue.component('component-a',{
+            template:'<div ><p>子组件的值：{{message}}</p></div>',
+            data:function(){
+                return {
+                    message:99
+                }
+            }
+        })
+
+        var app=new Vue({
+            el: '#app',
+            methods:{
+                sendToChild:function(){
+                    this.$refs.comA.message='这是父组件传给子组件的值'
+                },
+                getChildMessage:function(){
+                    var msg=this.$refs.comA.message;
+                    alert(msg);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

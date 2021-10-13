@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='parent  子组件直接硬改父组件属性' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <component-a></component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var bus=new Vue();
+
+        Vue.component('component-a',{
+            template:'<div><button @click="doChange">doChange</button></div>',
+            methods:{
+                doChange:function(){
+                    this.$parent.message='这是从子组件给父组件的数据'
+                }
+            }
+        })
+
+        var app=new Vue({
+            el: '#app',
+            data:{
+                message:0
+            }
+        })
+    </script>
+</body>
+</html>

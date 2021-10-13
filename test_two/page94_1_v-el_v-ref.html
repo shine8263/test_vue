@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='refs 其实是v-el普通标签 和 v-ref组件  二合一' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app" @click="showRef">
+        <p ref="comP"></p>
+        <component-a ref="comA"></component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var bus=new Vue();
+
+        Vue.component('component-a',{
+            template:'<div ><p>子组件的值：{{message}}</p></div>',
+            data:function(){
+                return {
+                    message:99
+                }
+            }
+        })
+
+        var app=new Vue({
+            el: '#app',
+            methods:{
+                showRef:function(){
+                    var comP=this.$refs.comP;
+                    var comA=this.$refs.comA;
+                    console.log('comP',comP);
+                    console.log('comA',comA);
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>
