@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='slot 分发内容 slot在子组件上' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        父组件
+        <component-a ></component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var bus=new Vue();
+
+        Vue.component('component-a',{
+            template:'<div><p v-show="showA">子组件</p></div>',
+            data:function(){
+                return {
+                    showA:true
+                }
+            }
+        })
+
+        var app=new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>
