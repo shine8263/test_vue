@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='具名slot 三个slot都是有name的，name主体值的其它内容就压根不显示了' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a >
+            <p slot="header">标题</p>
+            <p>我是不含slot特性的主体值内容</p>
+            <p slot="footer">底部</p>
+        </component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //三个slot都是有name的，name主体值的其它内容就压根不显示了
+
+        Vue.component('component-a',{
+            template:'<div>\
+                <div class="a">\
+                    <slot name="x">slot头部</slot>\
+                </div>\
+                <div class="b">\
+                    <slot name="我不是匿名slot了哈哈">slot主体</slot>\
+                </div>\
+                <div class="c">\
+                    <slot name="footer">slot脚部</slot>\
+                </div>\
+                </div>'
+        })
+
+        var app=new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='具名slot slot默认内容测试' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a >
+            <p slot="header">标题</p><br/>
+            <p slot="footer">底部</p>
+        </component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //主体值中在非具名内容外，哪怕有一个<br/>都算有内容，就不会触发slot的默认内容
+
+        Vue.component('component-a',{
+            template:'<div>\
+                <div class="a">\
+                    <slot name="x">slot头部</slot>\
+                </div>\
+                <div class="b">\
+                    <slot >slot主体</slot>\
+                </div>\
+                <div class="c">\
+                    <slot name="footer">slot脚部</slot>\
+                </div>\
+                </div>'
+        })
+
+        var app=new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='slot scope' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a >
+            <template scope="propsA">
+                <p>主体的template的原内容</p>
+                <p>{{propsA.msg}}</p>
+                <p>{{propsA.msgB}}</p>
+                <p>{{propsA.msgC}}</p>
+            </template>
+            <template scope="propsB">
+                <p>主体的templateB的原内容</p>
+                <p>{{propsB.msg}}</p>
+                <p>{{propsB.msgB}}</p>
+            </template>
+        </component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //主体值中的<template>实际生效的只有一个，是最后一个
+        //一个slot一个值
+
+        Vue.component('component-a',{
+            template:'<div class="container">\
+                这是随便写的内容brbrbr\
+                <div class="c">\
+                    <slot msg="来自插槽的消息">slot本体</slot>\
+                    仍然是随便写的内容brbrbr\
+                    <slot msgB="来自插槽的消息B">slot本体B</slot>\
+                    仍再来一次内容brbrbr\
+                    <slot msgC="来自插槽的消息C">slot本体C</slot>\
+                    <slot msgC="来自插槽的消息C">slot本体C</slot>\
+                </div>\
+                这也是随便写的内容brbrbr\
+            </div>'
+        })
+
+        var app=new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>

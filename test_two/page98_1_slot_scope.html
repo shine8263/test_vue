@@ -2,21 +2,27 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <meta title='slot 作为默认内容' >
+    <meta title='slot scope' >
     <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
 </head>
 <body>
     <div id="app">
         <component-a >
-            <!-- <p>分发的内容</p>
-            <p>更多分发的内容</p> -->
+            <template scope="propsA">
+                <p>主体的template的原内容</p>
+                <p>{{propsA.msg}}</p>
+            </template>
         </component-a>
     </div>
     <script src='../vue.js'></script>
     <script>
 
         Vue.component('component-a',{
-            template:'<div><p><slot><p>如果父组件没有默认内容，就展示此内容</p></slot></p></div>'
+            template:'<div class="container">\
+                <div class="c">\
+                    <slot msg="来自插槽的消息">slot本体</slot>\
+                </div>\
+            </div>'
         })
 
         var app=new Vue({

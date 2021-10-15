@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='具名slot 匿名slot都不要的情况' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a >
+            <p slot="header">标题</p>
+            <p>我是不含slot特性的主体值内容</p>
+            <p slot="footer">底部</p>
+        </component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //一个匿名slot都没有的情况，其实本质上跟上例是一回事
+
+        Vue.component('component-a',{
+            template:'<div>\
+                <div class="a">\
+                    <slot name="x">slot头部</slot>\
+                </div>\
+                <div class="c">\
+                    <slot name="footer">slot脚部</slot>\
+                </div>\
+                </div>'
+        })
+
+        var app=new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>
