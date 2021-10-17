@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta  >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a :count="1" ></component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //自定义一个组件然后玩递归，组件无限自己嵌套自己
+        //注意:count='xxx'里面 count++不能用，只能用count+1
+
+        Vue.component('component-a', {
+            props: {
+                count: {
+                    type: Number,
+                    default:0
+                }
+            },
+            template: '<div class="container">\
+                {{count}}\
+               <p>111</p>\
+            <component-a :count="count+1" v-if="count<3" ></component-a>\
+                        </div>'
+            
+        })
+
+        var app=new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>

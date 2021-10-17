@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta  >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a >
+            <template>
+                <h2 slot="header">我是头顶</h2>
+                <p >我是身体</p>
+                <div slot="footer">我是jo</div>
+            </template>
+        </component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //使用$slot直接访问slot的值
+        //$slots.default是狙的主体值中的其它值，如<p >我是身体</p>
+        //$slots.header这种写了具体名字的狙的是主体值中的具体值
+
+        Vue.component('component-a', {
+            template:'<div class="container">\
+            <div>\
+                <slot name="header">组件头</slot>\
+            </div>\
+            <div>\
+                <slot name="main">组件体</slot>\
+            </div>\
+            <div>\
+                <slot name="footer">组件脚</slot>\
+            </div>\
+            </div>',
+            mounted: function () {
+                var header = this.$slots.header;
+                var main = this.$slots.main;
+                var footer = this.$slots.footer;
+                var defaultValue = this.$slots.default;
+                console.log('header:', header);
+                console.log('main:', main);
+                console.log('footer:', footer);
+                console.log('defaultValue:', defaultValue);
+                console.log('footer[0]:', footer[0].elm.innerHTML);
+            }
+        })
+
+        var app=new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>

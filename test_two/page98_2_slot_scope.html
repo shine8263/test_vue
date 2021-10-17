@@ -25,6 +25,7 @@
     <script>
         //主体值中的<template>实际生效的只有一个，是最后一个
         //一个slot一个值
+        //另外发现，scope这种玩法slot不需要去具名（主的slot对应内的name）
 
         Vue.component('component-a',{
             template:'<div class="container">\

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta title='slot scope' >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a :books="books">
+            <template scope="arr">
+                <li>{{arr.bookName}}</li>
+            </template>
+        </component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //这个例子的过程是这样的：
+        //主体的books通过props注入到内体
+        //内体的template中slot用到了v-for，所以是个循环，循环books数组
+        //内体template中的DOM内玩起了代码逻辑，先是v-for="book in books"
+        //然后是:book-name="book.name"
+        //接着这个book-name的值（所有的book-name值）会发射到主体的scope中（scope的名字propsA叫啥名其实无所谓）
+        //且到了主体的{{}}内对应的是驼峰命名bookName
+        //然后绕了这么一大圈子，就可以循环熏染出所有值了
+
+        Vue.component('component-a', {
+            props:{
+                books: {
+                    type: Array,
+                    default: function () {
+                        return [];
+                    }
+                }
+            },
+            template:'<div class="container">\
+            <ul>\
+                <slot  v-for="book in books" :book-name="book.name">111</slot>\
+            </ul>\
+            </div>'
+        })
+
+        var app=new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    {
+                        "name": "java学习",
+                        "price":98
+                    },
+                    {
+                        "name": "js学习",
+                        "price":80
+                    },
+                    {
+                        "name": "vue学习",
+                        "price":70
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
