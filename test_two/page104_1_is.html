@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta  >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a :is="componentName"></component-a>
+        <button @click="changeComponent('A')">使用A组件</button>
+        <button @click="changeComponent('B')">使用B组件</button>
+        <button @click="changeComponent('C')">使用C组件</button>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //component内使用:is 来动态选择组件
+
+        var app=new Vue({
+            el: '#app',
+            data:{
+                componentName:"comA"
+            },
+            components:{
+                comA:{
+                    template:'<div>AAA</div>'
+                },
+                comB:{
+                    template:'<div>BBB</div>'
+                },
+                comC:{
+                    template:'<div>CCC</div>'
+                }
+            },
+            methods:{
+                changeComponent:function(n){
+                    this.componentName='com'+n;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

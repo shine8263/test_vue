@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta  >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a inline-template>
+            <div>
+                <p>{{message}}</p>
+                <p>{{msg}}</p>
+            </div>
+        </component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //内联template，inline-template，即主体值不再是主体值，变成了内template了，
+        //并且里面的{{}}既可以从父组件取值，也可以从内组件取值
+        //然而实际本例中{{message}}不能捉到父组件的message属性，这跟书中不同
+
+        Vue.component('component-a', {
+            data:function(){
+                return {
+                    msg:"son",
+                    message:"sonson"
+                }
+            }
+        })
+
+        var app=new Vue({
+            el: '#app',
+            data:{
+                message:"father"
+            }
+        })
+    </script>
+</body>
+</html>

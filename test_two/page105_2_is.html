@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta  >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a :is="comA"></component-a>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //component内使用:is 来动态选择组件  直接绑定到组件对象上
+        //不使用:is 而使用is
+        //结论：这样玩不行
+
+        var comA={
+            template:'<div>AAA</div>'
+        }
+
+        var app=new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>
