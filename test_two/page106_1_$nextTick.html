@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta  >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <div id="comA" v-if="isShow">这是个组件</div>
+        <button @click="showThis()">显示或隐藏</button>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //v-if 动态显示组件
+        //这个会固定报一个错，找不到innerHtml，这就是异步更新队列的原因。类似懒加载
+
+
+        var app=new Vue({
+            el: '#app',
+            data:{
+                isShow:false
+            },
+            methods:{
+                showThis:function(){
+                    this.isShow=true;
+                    var text=document.getElementById('comA').innerHtml;
+                    console.log('text:',text);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
