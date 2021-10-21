@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta  >
+    <link rel="stylesheet" type="text/css" href="../test_cart/style.css" />
+</head>
+<body>
+    <div id="app">
+        <component-a ></component-a>
+        <script type="text/x-template" id="my-component">
+            <div id='container'>
+                这是组件的内容
+            </div>
+        </script>
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        //使用text/x-template 实现在html中写template
+
+
+        Vue.component('component-a',{
+            template:'#my-component'
+        });
+
+        var app=new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>
