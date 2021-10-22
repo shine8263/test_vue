@@ -21,18 +21,25 @@ Vue.component('input-number',{
         \
     </div>\
     ',
+    data:function(){
+        return {
+            currentValue:this.value
+        }
+    },
     methods:{
         reduce:function(){
-            if(this.number-1>=this.min){
-                this.number--;
+            if(this.currentValue-1>=this.min){
+                this.currentValue--;
+                this.$emit('input',this.currentValue);
             }
-            console.log('this.number:',this.number);
+            console.log('this.currentValue:',this.currentValue);
         },
         plus:function(){
-            if(this.number+1<=this.max){
-                this.number++;
+            if(this.currentValue+1<=this.max){
+                this.currentValue++;
+                this.$emit('input',this.currentValue);
             }
-            console.log('this.number:',this.number);
+            console.log('this.currentValue:',this.currentValue);
         }
     }
 })
