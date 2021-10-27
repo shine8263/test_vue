@@ -1,10 +1,4 @@
 Vue.component('tabs',{
-    template:
-    '<div id="container">666\
-       <div v-for="{pane,index} in navList">\
-          <pane :paneName="pane.paneName" :paneContext="pane.paneContext"></pane>\
-       </div>\
-    </div>',
     data:function(){
         return {
             navList:[
@@ -22,5 +16,11 @@ Vue.component('tabs',{
                 }
             ]
         }
-    }
+    },
+    template:
+    '<div id="container">666\
+       <div v-for="{pane,index} in navList">\
+          <pane :paneName="pane.paneName" :paneContext="pane.paneContext"></pane>\
+       </div>\
+    </div>'
 })
