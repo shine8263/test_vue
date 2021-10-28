@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="app">
+            ticket=aHdTZ3ZyQVAvU3R5dzM3OXQ5SjV4U09CQXViaHdJUm9ZTldMekxUR0pzZjNVTVc4T0oxcUs1MTV6NmFVQ<br/>
+            jNIQUF5NVF2VVpPK0R6d2h4QUwxOUhmUGlaNlpRbzAwNmM3aGMwQmZWcldPTXA3OGFRdjd0ZGJjM3ltN3dGQzRXO<br/>
+            HNrZEtwWlBFVEppa0JtZE5JMFBFVDNBZnBnamRJUERydU1hQ2Q4SmpZUHpyWW5SamcvdlJKbXo1N045eFZ0NTVRR<br/>
+            kd0WTJJV3AvSGgxRUdnZW9DRVYwUldTckdYSG9rMVYweXNBWGcwdTJLQmRpbWRabGFxRmVyKzlJSmJUY0IxRHc1b<br/>
+            kVOQXNFT1ZTeUdOanpoelVpQ3c9PQ==
+        </div>
+
+        <script src="../vue.js"></script>
+        <script>
+
+        var url='ticket=aHdTZ3ZyQVAvU3R5dzM3OXQ5SjV4U09CQXViaHdJUm9ZTldMekxUR0pzZjNVTVc4T0oxcUs1MTV6NmFVQjNIQUF5NVF2VVpPK0R6d2h4QUwxOUhmUGlaNlpRbzAwNmM3aGMwQmZWcldPTXA3OGFRdjd0ZGJjM3ltN3dGQzRXOHNrZEtwWlBFVEppa0JtZE5JMFBFVDNBZnBnamRJUERydU1hQ2Q4SmpZUHpyWW5SamcvdlJKbXo1N045eFZ0NTVRRkd0WTJJV3AvSGgxRUdnZW9DRVYwUldTckdYSG9rMVYweXNBWGcwdTJLQmRpbWRabGFxRmVyKzlJSmJUY0IxRHc1bkVOQXNFT1ZTeUdOanpoelVpQ3c9PQ==';
+        console.log('url为',url);
+        console.log('采取第一种取ticket方式：')
+        var ticket=getQueryVariable('ticket');
+        console.log('ticket为',ticket);
+        console.log('采取第二种取ticket方式：')
+        var ticket2=getQueryVariable2('ticket');
+        console.log('ticket2为',ticket2);
+
+        function getQueryVariable(variable)
+        {
+            var query = url
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                console.log('url分割后为',pair);
+                if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+
+        function getQueryVariable2(variable)
+        {
+            var query = url
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var equalIndex=vars[i].indexOf("=");
+                var key = vars[i].substring(0,equalIndex);
+                var val = vars[i].substring(equalIndex+1);
+                console.log('url分割后key为',key);
+                console.log('url分割后val为',val);
+                if(key == variable){return val;}
+            }
+            return(false);
+        }
+
+        //获取请求参数
+        function getQueryVariable(variable)
+        {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+        }
+
+        //获取请求参数
+        function getQueryVariable(variable)
+        {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var equalIndex=vars[i].indexOf("=");
+            var key = vars[i].substring(0,equalIndex);
+            var val = vars[i].substring(equalIndex+1);
+            if(key == variable){return val;}
+        }
+        return(false);
+        }
+
+            
+
+            
+        </script>
+    </body>
+</html>
