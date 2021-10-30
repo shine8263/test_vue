@@ -6,6 +6,7 @@
 <body>
     <div id="app">
         <div v-test="{msg:'hello',name:'Aresn'}">entity</div>
+        <div v-test2="{handleClose}">entity</div>
     </div>
     <script src='../vue.js'></script>
     <script>
@@ -19,8 +20,27 @@
             }
         })
 
+        Vue.directive('test2', {
+            bind: function (el, binding, vnode) {
+                console.log('el:', el);
+                console.log('======================');
+                console.log(binding.expression);
+                console.log(binding.value);
+                //binding.value('abc');
+                console.log(binding.value);
+            }
+        })
+
         var app=new Vue({
-            el:'#app'
+            el: '#app',
+            data: {
+                show: true
+            },
+            methods: {
+                handleClose: function () {
+                    this.show = false;
+                }
+            }
         })
 
     </script>
