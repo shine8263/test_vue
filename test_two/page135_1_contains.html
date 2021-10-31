@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+</head>
+<body>
+    <div id="parent" >父
+        <div id="children">子</div>
+        
+    </div>
+    <script src='../vue.js'></script>
+    <script>
+        var parent = document.getElementById("parent");
+        var children = document.getElementById("children");
+        console.log(parent.contains(children));
+        console.log(children.contains(parent));
+
+
+    </script>
+</body>
+</html>
