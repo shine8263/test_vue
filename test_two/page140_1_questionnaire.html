@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            .answer{
+                height:200px;
+            }
+            button{
+                width:100px;
+                height:30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <questionnaire :qas="qas">
+            </questionnaire>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            Vue.component('questionnaire',{
+                props:{
+                    qas:{
+                        type:Array
+                    }
+                },
+                data:function(){
+                    return {
+                        qa:this.qas[0],
+                        qnum:0
+                    }
+                },
+                template:'<div id="container">\
+                        <h1>Question System</h1>\
+                        <div class="question">\
+                            <h2>{{qnum+1}}.{{qa.question}}</h2>\
+                        </div>\
+                        <div class="answer">\
+                            <div  v-for="answer in qa.answers">\
+                                <label><input name="answerSelect" type="radio"/>{{answer}}</label>\
+                            </div>\
+                        </div>\
+                        <div class="selectButton">\
+                            <button @click="submit" v-show="qnum===qas.length-1">submit</button>\
+                            <button @click="lastQuestion" v-show="qnum>0">last</button>\
+                            <button @click="nextQuestion" v-show="qnum<qas.length-1">next</button>\
+                            <button @click="reset">reset</button>\
+                        </div>\
+                    </div>',
+                methods:{
+                    lastQuestion:function(){
+                        console.log("last");
+                        this.qnum--;
+                        if(this.qnum<0) this.qnum=0;
+                        console.log(this.qnum);
+                        this.qa=this.qas[this.qnum];
+                    },
+                    nextQuestion:function(){
+                        console.log("next");
+                        this.qnum++;
+                        if(this.qnum>=this.qas.length) this.qnum=this.qas.length-1;
+                        console.log(this.qnum);
+                        this.qa=this.qas[this.qnum];
+                        var answerSelect=document.getElementsByName('answerSelect');
+                        console.log('answerSelect:',answerSelect);
+                        console.log(answerSelect.values)
+                    },
+                    reset:function(){
+                        console.log("reset");
+                    },
+                    submit:function(){
+                        alert("submit!!");
+                    }
+                }
+            })
+
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    qas:[
+                        {
+                            question:"What's your sex?",
+                            answers:["male","female","secrecy"],
+                            qtype:1
+                        },
+                        {
+                            question:"What's your interest?",
+                            answers:["reading","swimming","running","watch movies","listening to music"],
+                            qtype:2
+                        },
+                        {
+                            question:"What's the date",
+                            answers:["2021-08-01","2021-09-01","2021-10-01"],
+                            qtype:1
+                        },
+                        {
+                            question:"Indroduce yourself.",
+                            answers:["male","female","secrecy"],
+                            qtype:3
+                        }
+                    ]
+
+
+                    
+                    
+                }
+            })
+        </script>
+    </body>
+</html>
