@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div id="app">
+            <anchor :level="2" title="特性">特性</anchor>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            Vue.component('anchor', {
+                props: {
+                    level: {
+                        type:Number,
+                        required:true
+                    },
+                    title: {
+                        type:String,
+                        default:''
+                    }
+                },
+                data: function () {
+                    return {
+                        urls: [
+                            'https://www.baidu.com',
+                            'https://www.csdn.net',
+                            'https://www.sina.com.cn',
+                            'https://v.qq.com/'
+                        ]
+                    }
+                },
+                render: function (createElement) {
+                    return createElement(
+                        'h' + this.level,
+                        [
+                            createElement(
+                                'a',
+                                {
+                                    domProps: {
+                                        'href': this.urls[this.level]
+                                    }
+                                },
+                                this.$slots.default
+                            )
+                        ]
+                    )
+                }
+            })
+
+            var app = new Vue({
+                el:'#app'
+            })
+        </script>
+    </body>
+</html>
